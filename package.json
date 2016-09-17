@@ -1,5 +1,5 @@
 {
-  "name": "bixby-auth",
+  "name": "bixby-aaa",
   "version": "0.0.0",
   "description": "Authentication components of the Bixby framework.",
   "author": {
