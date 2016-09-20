@@ -1,7 +1,8 @@
 exports = module.exports = {
-  'verifypassword': require('./verifypassword'),
-  'bearer': require('./bearer'),
-  'oauth': require('./oauth')
+  'verifypassword': require('./xom/verifypassword'),
+  // TODO: Move these files
+  //'bearer': require('./bearer'),
+  //'oauth': require('./oauth')
 };
 
 exports.load = function(id) {
