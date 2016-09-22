@@ -1,4 +1,4 @@
-exports = module.exports = function(verifyCb) {
+exports = module.exports = function() {
   
   // TODO: Implement this for real.
   return function(username, password, cb) {
