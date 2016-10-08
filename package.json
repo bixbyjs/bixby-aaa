@@ -1,7 +1,14 @@
 {
   "name": "bixby-aaa",
   "version": "0.0.0",
-  "description": "Authentication components of the Bixby framework.",
+  "description": "Access control components for Bixby.js.",
+  "keywords": [
+    "components",
+    "authentication",
+    "authorization",
+    "accounting",
+    "auditing"
+  ],
   "author": {
     "name": "Jared Hanson",
     "email": "jaredhanson@gmail.com",
