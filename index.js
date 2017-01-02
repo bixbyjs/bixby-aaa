@@ -1,5 +1,6 @@
 exports = module.exports = {
-  'authenticatepassword': require('./xom/authenticatepassword')
+  'authenticatepassword': require('./xom/authenticatepassword'),
+  'authenticatetoken': require('./xom/authenticatetoken')
 };
 
 exports.load = function(id) {
