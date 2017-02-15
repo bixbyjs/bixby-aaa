@@ -4,10 +4,12 @@ var pkg = require('..');
 var expect = require('chai').expect;
 
 
-describe('bixby-auth', function() {
+describe('bixby-aaa', function() {
   
-  it('should export hello world', function() {
-    expect(pkg.hello).to.equal('world');
+  it('should export manifest', function() {
+    expect(pkg).to.be.an('object');
+    expect(pkg['password/authenticate']).to.be.a('function');
+    expect(pkg['token/authenticate']).to.be.a('function');
   });
   
 });
