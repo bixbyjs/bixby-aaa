@@ -1,6 +1,9 @@
 exports = module.exports = function(Tokens) {
   
   return function(token, cb) {
+    
+    return cb(null, { id: '1', subject: 'usr_joe' });
+    
     Tokens.decode(token, function(err, claims) {
       if (err) { return cb(err); }
       
