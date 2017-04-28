@@ -29,6 +29,13 @@
     }
   ],
   "main": "./lib",
+  "assembly": {
+    "namespace": "aaa",
+    "components": [
+      "password/authenticate",
+      "token/authenticate"
+    ]
+  },
   "dependencies": {
     "passport-http-bearer": "^1.0.1",
     "passport-http-oauth": "^0.1.3"
