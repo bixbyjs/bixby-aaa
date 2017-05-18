@@ -1,5 +1,5 @@
 {
-  "name": "bixby-aaa",
+  "name": "bixby-auth",
   "version": "0.0.0",
   "description": "Access control components for Bixby.js.",
   "keywords": [
@@ -30,7 +30,7 @@
   ],
   "main": "./lib",
   "assembly": {
-    "namespace": "aaa",
+    "namespace": "auth",
     "components": [
       "password/authenticate",
       "token/authenticate"
