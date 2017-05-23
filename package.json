@@ -28,7 +28,7 @@
       "url": "http://opensource.org/licenses/MIT"
     }
   ],
-  "main": "./lib",
+  "main": "./app",
   "assembly": {
     "namespace": "security",
     "components": [
