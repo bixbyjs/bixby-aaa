@@ -1,5 +1,5 @@
 {
-  "name": "bixby-auth",
+  "name": "bixby-security",
   "version": "0.0.0",
   "description": "Access control components for Bixby.js.",
   "keywords": [
@@ -16,10 +16,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bixbyjs/bixby-auth.git"
+    "url": "git://github.com/bixbyjs/bixby-security.git"
   },
   "bugs": {
-    "url": "http://github.com/bixbyjs/bixby-auth/issues"
+    "url": "http://github.com/bixbyjs/bixby-security/issues"
   },
   "license": "MIT",
   "licenses": [
@@ -30,7 +30,7 @@
   ],
   "main": "./lib",
   "assembly": {
-    "namespace": "auth",
+    "namespace": "security",
     "components": [
       "password/authenticate",
       "token/authenticate"
