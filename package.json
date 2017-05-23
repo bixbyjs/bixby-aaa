@@ -32,8 +32,8 @@
   "assembly": {
     "namespace": "security",
     "components": [
-      "password/authenticate",
-      "token/authenticate"
+      "authentication/password/authenticate",
+      "authentication/token/authenticate"
     ]
   },
   "dependencies": {
