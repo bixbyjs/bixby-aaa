@@ -17,5 +17,5 @@ exports = module.exports = function(directory) {
   };
 };
 
-exports['@implements'] = 'http://i.bixbyjs.org/aaa/token/authenticate';
+exports['@implements'] = 'http://i.bixbyjs.org/security/authentication/token/authenticate';
 exports['@require'] = [ 'http://i.bixbyjs.org/ds/Directory' ];
