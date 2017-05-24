@@ -37,8 +37,6 @@
     ]
   },
   "dependencies": {
-    "passport-http-bearer": "^1.0.1",
-    "passport-http-oauth": "^0.1.3"
   },
   "devDependencies": {
     "make-node": "^0.3.0",
