@@ -1,11 +1,12 @@
 {
   "name": "bixby-security",
   "version": "0.0.0",
-  "description": "Access control components for Bixby.js.",
+  "description": "Security components for Bixby.js.",
   "keywords": [
     "components",
     "authentication",
     "authorization",
+    "accesscontrol",
     "accounting",
     "auditing"
   ],
