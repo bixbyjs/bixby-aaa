@@ -2,7 +2,7 @@
 
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var factory = require('../../lib/password/authenticate');
+var factory = require('../../app/authentication/password/authenticate');
 
 
 describe('password/authenticate', function() {
