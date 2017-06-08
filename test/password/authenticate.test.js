@@ -11,4 +11,9 @@ describe('password/authenticate', function() {
     expect(factory).to.be.a('function');
   });
   
+  it('should be annotated', function() {
+    expect(factory['@implements']).to.equal('http://i.bixbyjs.org/security/authentication/password/authenticate');
+    expect(factory['@singleton']).to.be.undefined;
+  });
+  
 });
