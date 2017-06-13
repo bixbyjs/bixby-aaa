@@ -40,6 +40,7 @@
     ]
   },
   "dependencies": {
+    "decisions": "^0.2.0",
     "fluidfactory": "^0.1.0"
   },
   "devDependencies": {
