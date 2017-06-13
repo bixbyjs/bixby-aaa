@@ -33,11 +33,15 @@
   "assembly": {
     "namespace": "security",
     "components": [
+      "credentials",
+      "credentials/file",
       "authentication/password/authenticate",
       "authentication/token/authenticate"
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "fluidfactory": "^0.1.0"
+  },
   "devDependencies": {
     "make-node": "^0.3.0",
     "mocha": "^3.4.2",
