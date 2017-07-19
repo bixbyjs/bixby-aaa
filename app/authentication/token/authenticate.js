@@ -1,5 +1,19 @@
-exports = module.exports = function(directory) {
+exports = module.exports = function(Tokens) {
   
+  return function(token, options, cb) {
+    if (typeof options == 'function') {
+      cb = options;
+      options = undefined;
+    }
+    options = options || {};
+    
+    Tokens.decipher(token, options, function(err, ctx, tkn) {
+      if (err) { return cb(err); }
+      return cb(null, tkn, ctx);
+    });
+  };
+  
+  /*
   return function(subject, issuer, cb) {
     // TODO: Parse subject for nameID format, relative to issuer, etc.
     //       translate into domain, realm, etc.
@@ -15,7 +29,9 @@ exports = module.exports = function(directory) {
       return cb(null, user);
     });
   };
+  */
 };
 
 exports['@implements'] = 'http://i.bixbyjs.org/security/authentication/token/authenticate';
-exports['@require'] = [ 'http://i.bixbyjs.org/ds/Directory' ];
+exports['@require'] = [ 'http://i.bixbyjs.org/tokens' ];
+//exports['@require'] = [ 'http://i.bixbyjs.org/ds/Directory' ];
