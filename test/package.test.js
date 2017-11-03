@@ -11,7 +11,7 @@ describe('bixby-security', function() {
     it('should have assembly metadata', function() {
       expect(json.assembly.namespace).to.equal('security');
       
-      expect(json.assembly.components).to.have.length(2);
+      expect(json.assembly.components).to.have.length(4);
       expect(json.assembly.components).to.include('authentication/password/authenticate');
       expect(json.assembly.components).to.include('authentication/token/authenticate');
     });
