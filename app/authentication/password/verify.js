@@ -4,7 +4,9 @@ exports = module.exports = function(directory) {
     directory.authenticate(username, password, function(err, user) {
       if (err) { return cb(err); }
       if (!user) { return cb(null, false); }
-      return cb(null, user);
+      
+      var info = { method: 'password' };
+      return cb(null, user, info);
     });
   };
 };
