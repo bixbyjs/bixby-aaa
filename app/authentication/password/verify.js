@@ -9,5 +9,5 @@ exports = module.exports = function(directory) {
   };
 };
 
-exports['@implements'] = 'http://i.bixbyjs.org/security/authentication/password/authenticate';
+exports['@implements'] = 'http://i.bixbyjs.org/security/authentication/password/verify';
 exports['@require'] = [ 'http://i.bixbyjs.org/ds/Directory' ];

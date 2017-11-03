@@ -12,7 +12,7 @@ describe('bixby-security', function() {
       expect(json.assembly.namespace).to.equal('security');
       
       expect(json.assembly.components).to.have.length(4);
-      expect(json.assembly.components).to.include('authentication/password/authenticate');
+      expect(json.assembly.components).to.include('authentication/password/verify');
       expect(json.assembly.components).to.include('authentication/token/authenticate');
     });
   });
