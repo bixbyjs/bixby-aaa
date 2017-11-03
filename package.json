@@ -45,9 +45,9 @@
   },
   "devDependencies": {
     "make-node": "^0.3.0",
-    "mocha": "^3.4.2",
-    "chai": "^4.0.2",
-    "sinon": "^2.3.2"
+    "mocha": "^4.0.1",
+    "chai": "^4.1.1",
+    "sinon": "^4.0.2"
   },
   "scripts": {
     "test": "node_modules/.bin/mocha test/*.test.js"
