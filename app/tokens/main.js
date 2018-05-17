@@ -52,6 +52,19 @@ exports = module.exports = function(IoC, tokens, logger) {
         });
       };
       
+      api.decode = function(type, token, cb) {
+        console.log('DECODE!');
+        console.log(type);
+        console.log(token);
+        
+        tokens.unseal(token, function(err, msg) {
+          console.log('UNSEALED?');
+          console.log(err);
+          console.log(msg);
+          
+        });
+      };
+      
       return api;
     });
 };
