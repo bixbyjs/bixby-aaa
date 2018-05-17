@@ -35,6 +35,7 @@
     "components": [
       "credentials",
       "credentials/file",
+      "tokens/main",
       "authentication/token/authenticate"
     ]
   },
