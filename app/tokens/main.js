@@ -1,11 +1,11 @@
-exports = module.exports = function(IoC, logger) {
+exports = module.exports = function(IoC, tokens, logger) {
   var Tokens = require('tokens').Tokens;
   
   
-  var tokens = new Tokens();
+  var itokens = new Tokens();
   
-  return Promise.resolve(tokens)
-    .then(function(tokens) {
+  return Promise.resolve(itokens)
+    .then(function(itokens) {
       var components = IoC.components('http://i.bixbyjs.org/security/tokens/Schema');
       return Promise.all(components.map(function(comp) { return comp.create(); } ))
         .then(function(schemas) {
@@ -14,23 +14,24 @@ exports = module.exports = function(IoC, logger) {
               , type = components[i].a['@type'];
         
             logger.info("Loaded security token schema '" + dialect + "' of type '" + type + "'");
-            tokens.schema(dialect, type, schema)
+            itokens.schema(dialect, type, schema)
           });
         })
         .then(function() {
-          return tokens;
+          return itokens;
         });
     })
-    .then(function(tokens) {
+    .then(function(itokens) {
       var api = {};
       
-      api.encode = function(type, msg, options, cb) {
+      api.encode = function(type, msg, to, cb) {
         console.log('ENCODE SECURITY TOKEN!');
         console.log(msg);
+        console.log(to)
         
         var encoder;
         try {
-          encoder = tokens.createEncoder(type);
+          encoder = itokens.createEncoder(type);
         } catch (ex) {
           return cb(ex);
         }
@@ -39,6 +40,15 @@ exports = module.exports = function(IoC, logger) {
           console.log(err);
           console.log(claims);
           
+          if (err) { return cb(err); }
+          tokens.seal(claims, to, null, function(err, token) {
+            console.log('I SEALED!');
+            console.log(err);
+            console.log(token);
+            
+            if (err) { return cb(err); }
+            return cb(null, token);
+          });
         });
       };
       
@@ -50,5 +60,6 @@ exports['@implements'] = 'http://i.bixbyjs.org/security/tokens';
 exports['@singleton'] = true;
 exports['@require'] = [
   '!container',
+  'http://i.bixbyjs.org/tokens',
   'http://i.bixbyjs.org/Logger'
 ];
