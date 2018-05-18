@@ -2,5 +2,5 @@ exports = module.exports = function() {
   // Load modules.
   var tokens = require('tokens');
   
-  return tokens.jwt.access.encode();
+  return tokens.types.access.encode();
 };
