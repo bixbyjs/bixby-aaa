@@ -36,6 +36,7 @@
       "credentials",
       "credentials/file",
       "tokens/main",
+      "tokens/access/jwt/schema",
       "authentication/token/authenticate"
     ]
   },
