@@ -13,6 +13,7 @@ describe('authentication/token/authenticate', function() {
   
   it('should be annotated', function() {
     expect(factory['@implements']).to.equal('http://i.bixbyjs.org/security/authentication/token/authenticate');
+    expect(factory['@singleton']).to.be.undefined;
   });
   
 });
