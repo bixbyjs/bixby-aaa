@@ -57,11 +57,24 @@ exports = module.exports = function(IoC, tokens, logger) {
         console.log(type);
         console.log(token);
         
-        tokens.unseal(token, function(err, msg) {
+        tokens.unseal(token, function(err, claims) {
           console.log('UNSEALED?');
           console.log(err);
-          console.log(msg);
+          console.log(claims);
           
+          
+          var decoder;
+          try {
+            decoder = itokens.createDecoder(type);
+          } catch (ex) {
+            return cb(ex);
+          }
+          
+          decoder.decode(claims, function(err, msg) {
+            if (err) { return cb(err); }
+            return cb(null, msg);
+            
+          });
         });
       };
       
