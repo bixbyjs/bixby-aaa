@@ -21,7 +21,7 @@ describe('tokens/access/jwt/decode', function() {
     var decodeSpy = sinon.stub();
     
     var factory = $require('../../../../app/tokens/access/jwt/decode',
-      { 'tokens': { jwt: { interpret: decodeSpy } } });
+      { 'tokens': { jwt: { access: { decode: decodeSpy } } } });
     var decode = factory();
     
     it('should create encode', function() {
