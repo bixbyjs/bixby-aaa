@@ -1,4 +1,4 @@
-exports = module.exports = function(Tokens) {
+exports = module.exports = function(tokens) {
   
   return function(token, options, cb) {
     if (typeof options == 'function') {
@@ -7,9 +7,9 @@ exports = module.exports = function(Tokens) {
     }
     options = options || {};
     
-    Tokens.decipher(token, options, function(err, ctx, tkn) {
+    tokens.decode('access', token, function(err, claims, ctx) {
       if (err) { return cb(err); }
-      return cb(null, tkn, ctx);
+      return cb(null, claims, ctx);
     });
   };
   
@@ -33,5 +33,7 @@ exports = module.exports = function(Tokens) {
 };
 
 exports['@implements'] = 'http://i.bixbyjs.org/security/authentication/token/authenticate';
-exports['@require'] = [ 'http://i.bixbyjs.org/tokens' ];
+exports['@require'] = [
+  'http://i.bixbyjs.org/security/tokens'
+];
 //exports['@require'] = [ 'http://i.bixbyjs.org/ds/Directory' ];

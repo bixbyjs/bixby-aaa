@@ -3,7 +3,7 @@ exports = module.exports = function() {
   
   return function decode(claims, options, cb) {
     console.log('INTERPRET JWT!!!!');
-    console.log(tok);
+    console.log(claims);
     console.log(options);
     
     if (!(claims.iss || claims.sub || claims.aud)) {
