@@ -14,7 +14,8 @@ exports = module.exports = function(IoC, tokens, logger) {
               , type = components[i].a['@type'];
         
             logger.info("Loaded security token schema '" + dialect + "' of type '" + type + "'");
-            itokens.schema(dialect, type, schema)
+            //itokens.schema(dialect, type, schema)
+            itokens.schema(type, schema);
           });
         })
         .then(function() {
@@ -52,9 +53,8 @@ exports = module.exports = function(IoC, tokens, logger) {
         });
       };
       
-      api.decode = function(type, token, cb) {
+      api.decode = function(token, cb) {
         console.log('DECODE!');
-        console.log(type);
         console.log(token);
         
         tokens.unseal(token, function(err, claims) {
@@ -65,7 +65,7 @@ exports = module.exports = function(IoC, tokens, logger) {
           
           var decoder;
           try {
-            decoder = itokens.createDecoder(type);
+            decoder = itokens.createDecoder();
           } catch (ex) {
             return cb(ex);
           }

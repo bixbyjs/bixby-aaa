@@ -7,7 +7,7 @@ exports = module.exports = function(tokens) {
     }
     options = options || {};
     
-    tokens.decode('access', token, function(err, claims, ctx) {
+    tokens.decode(token, function(err, claims, ctx) {
       if (err) { return cb(err); }
       return cb(null, claims, ctx);
     });
