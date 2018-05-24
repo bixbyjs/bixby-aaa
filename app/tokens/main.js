@@ -25,7 +25,7 @@ exports = module.exports = function(IoC, tokens, logger) {
     .then(function(itokens) {
       var api = {};
       
-      api.encode = function(type, msg, to, options, cb) {
+      api.encode = function(msg, to, options, cb) {
         console.log('ENCODE SECURITY TOKEN!');
         console.log(msg);
         console.log(to)
