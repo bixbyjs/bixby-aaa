@@ -10,10 +10,10 @@ exports = module.exports = function(IoC, tokens, logger) {
       return Promise.all(components.map(function(comp) { return comp.create(); } ))
         .then(function(schemas) {
           schemas.forEach(function(schema, i) {
-            var dialect = components[i].a['@schema']
-              , type = components[i].a['@type'];
+            var type = components[i].a['@type'];
         
-            logger.info("Loaded security token schema '" + dialect + "' of type '" + type + "'");
+            logger.info('Loaded security token schema: ' + type);
+            //logger.info("Loaded security token schema '" + dialect + "' of type '" + type + "'");
             //itokens.schema(dialect, type, schema)
             itokens.schema(type, schema);
           });
