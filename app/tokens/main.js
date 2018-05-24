@@ -42,7 +42,7 @@ exports = module.exports = function(IoC, tokens, logger) {
           console.log(claims);
           
           if (err) { return cb(err); }
-          tokens.seal(claims, recipients, null, function(err, token) {
+          tokens.seal(claims, recipients, options.token, function(err, token) {
             console.log('I SEALED!');
             console.log(err);
             console.log(token);
