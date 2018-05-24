@@ -25,10 +25,10 @@ exports = module.exports = function(IoC, tokens, logger) {
     .then(function(itokens) {
       var api = {};
       
-      api.encode = function(msg, to, options, cb) {
+      api.encode = function(message, recipients, options, cb) {
         console.log('ENCODE SECURITY TOKEN!');
-        console.log(msg);
-        console.log(to)
+        console.log(message);
+        console.log(recipients)
         
         var encoder;
         try {
@@ -37,12 +37,12 @@ exports = module.exports = function(IoC, tokens, logger) {
           return cb(ex);
         }
         
-        encoder.encode(msg, function(err, claims) {
+        encoder.encode(message, function(err, claims) {
           console.log(err);
           console.log(claims);
           
           if (err) { return cb(err); }
-          tokens.seal(claims, to, null, function(err, token) {
+          tokens.seal(claims, recipients, null, function(err, token) {
             console.log('I SEALED!');
             console.log(err);
             console.log(token);
