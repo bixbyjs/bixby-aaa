@@ -25,14 +25,14 @@ exports = module.exports = function(IoC, tokens, logger) {
     .then(function(itokens) {
       var api = {};
       
-      api.encode = function(type, msg, to, cb) {
+      api.encode = function(type, msg, to, options, cb) {
         console.log('ENCODE SECURITY TOKEN!');
         console.log(msg);
         console.log(to)
         
         var encoder;
         try {
-          encoder = itokens.createEncoder(type);
+          encoder = itokens.createEncoder(options.schema);
         } catch (ex) {
           return cb(ex);
         }
