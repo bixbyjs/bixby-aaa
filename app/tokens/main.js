@@ -57,14 +57,8 @@ exports = module.exports = function(IoC, tokens, logger) {
       };
       
       api.decode = function(token, cb) {
-        console.log('DECODE!');
-        console.log(token);
-        
-        tokens.unseal(token, function(err, claims) {
-          console.log('UNSEALED?');
-          console.log(err);
-          console.log(claims);
-          
+        tokens.unseal(token, function(err, claims, issuer, conditions) {
+          if (err) { return cb(err); }
           
           var decoder;
           try {
@@ -73,10 +67,9 @@ exports = module.exports = function(IoC, tokens, logger) {
             return cb(ex);
           }
           
-          decoder.decode(claims, function(err, msg) {
+          decoder.decode(claims, function(err, message) {
             if (err) { return cb(err); }
-            return cb(null, msg);
-            
+            return cb(null, message, issuer, conditions);
           });
         });
       };
