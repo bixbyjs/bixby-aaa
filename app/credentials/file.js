@@ -11,5 +11,3 @@ exports = module.exports = function() {
     return credentials;
   };
 };
-
-exports['@implements'] = 'http://i.bixbyjs.org/security/createCredentialManagerImpl';
