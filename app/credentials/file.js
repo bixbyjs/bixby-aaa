@@ -1,13 +1,15 @@
 exports = module.exports = function() {
-  var path = require('path');
-  var FileCredentialManager = require('../../lib/filecredentialmanager');
+  var uri = require('url')
+    , FileCredentialsStore = require('../../lib/filecredentialmanager');
   
   
-  return function createFileCredentialManager(options) {
-    var dirname = path.dirname(require.main.filename);
-    var file = path.join(dirname, 'etc/credentials.toml');
+  return function createFileCredentialsStore(options) {
+    if (typeof options == 'string') {
+      options = { url: options };
+    }
     
-    var credentials = new FileCredentialManager(file);
-    return credentials;
+    var url = uri.parse(options.url);
+    if (url.protocol !== 'file:') { return; }
+    return new FileCredentialsStore(url.pathname);
   };
 };

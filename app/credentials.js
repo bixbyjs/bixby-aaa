@@ -1,12 +1,13 @@
 exports = module.exports = function(container, file) {
-  var Factory = require('fluidfactory');
+  var path = require('path')
+    , Factory = require('fluidfactory');
   
   
   var factory = new Factory();
   
   return Promise.resolve(factory)
     .then(function(factory) {
-      var createImplComps = container.components('http://i.bixbyjs.org/security/CredentialsProvider');
+      var createImplComps = container.components('http://i.bixbyjs.org/security/CredentialsStoreProvider');
       return Promise.all(createImplComps.map(function(comp) { return comp.create(); } ))
         .then(function(impls) {
           impls.forEach(function(impl) {
@@ -20,7 +21,15 @@ exports = module.exports = function(container, file) {
         });
     })
     .then(function(factory) {
-      return factory.create();
+      return new Promise(function(resolve, reject) {
+        // TODO: put service discovery into here
+        process.nextTick(function() {
+          var dirname = path.dirname(require.main.filename);
+          var file = path.join(dirname, 'etc/credentials.toml');
+          var url = 'file://' + file;
+          resolve(factory.create(url));
+        })
+      });
     });
 };
 
