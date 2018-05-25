@@ -33,7 +33,7 @@
   "assembly": {
     "namespace": "security",
     "components": [
-      "credentials",
+      "credentials-old",
       "credentials/file",
       "tokens/main",
       "tokens/access/jwt/schema",
