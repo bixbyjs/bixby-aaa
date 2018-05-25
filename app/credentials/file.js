@@ -1,6 +1,6 @@
 exports = module.exports = function() {
   var uri = require('url')
-    , FileCredentialsStore = require('../../lib/filecredentialmanager');
+    , FileCredentialsStore = require('../../lib/filecredentialsstore');
   
   
   return function createFileCredentialsStore(options) {
