@@ -18,7 +18,30 @@ describe('credentials/file', function() {
     expect(factory['@singleton']).to.be.undefined;
   });
   
-  describe.only('FileCredentialStore', function() {
+  describe('FileCredentialStore', function() {
+    
+    describe('containing credentials referenced by id', function() {
+      var store = factory()('file://' + path.resolve(__dirname, '../fixtures/credentials/sts.toml'));
+      
+      describe('get credential for entity with which there is a single shared secret', function() {
+        var cred;
+        
+        before(function(done) {
+          store.get({ id: '2' }, function(err, c) {
+            if (err) { return done(err); }
+            cred = c;
+            done();
+          });
+        });
+        
+        it('should yield credential', function() {
+          expect(cred).to.deep.equal({
+            secret: 'HfwY5cXN0F0lEK2W6eZ8ENDM7YL3zqVE'
+          });
+        });
+      }); // get credential
+      
+    }); // containing credentials referenced by identifier
     
     describe('containing credentials referenced by identifier', function() {
       var store = factory()('file://' + path.resolve(__dirname, '../fixtures/credentials/userinfo.toml'));
