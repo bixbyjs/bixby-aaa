@@ -33,7 +33,10 @@ exports = module.exports = function(container, file) {
     });
 };
 
-exports['@implements'] = 'http://i.bixbyjs.org/security/CredentialManager';
+exports['@implements'] = [
+  'http://i.bixbyjs.org/security/CredentialManager',
+  'http://i.bixbyjs.org/security/CredentialsStore'
+];
 exports['@singleton'] = true;
 exports['@require'] = [
   '!container',
