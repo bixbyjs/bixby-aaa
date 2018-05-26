@@ -13,7 +13,7 @@ describe('credentials', function() {
   });
   
   it('should be annotated', function() {
-    expect(factory['@implements']).to.equal('http://i.bixbyjs.org/security/CredentialManager');
+    expect(factory['@implements']).to.equal('http://i.bixbyjs.org/security/CredentialsStore');
     expect(factory['@singleton']).to.equal(true);
   });
   
