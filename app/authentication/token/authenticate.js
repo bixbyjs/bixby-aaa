@@ -7,7 +7,7 @@ exports = module.exports = function(tokens) {
     }
     options = options || {};
     
-    tokens.decode(token, function(err, message, conditions, issuer) {
+    tokens.decode(token, options, function(err, message, conditions, issuer) {
       if (err) { return cb(err); }
       return cb(null, message, conditions, issuer);
     });

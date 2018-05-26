@@ -56,8 +56,14 @@ exports = module.exports = function(IoC, tokens, logger) {
         });
       };
       
-      api.decode = function(token, cb) {
-        tokens.unseal(token, function(err, claims, conditions, issuer) {
+      api.decode = function(token, options, cb) {
+        if (typeof options == 'function') {
+          cb = options;
+          options = undefined;
+        }
+        options = options || {};
+        
+        tokens.unseal(token, options, function(err, claims, conditions, issuer) {
           if (err) { return cb(err); }
           
           var decoder;
