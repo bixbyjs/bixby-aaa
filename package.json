@@ -42,7 +42,8 @@
   },
   "dependencies": {
     "decisions": "^0.2.0",
-    "fluidfactory": "^0.1.0"
+    "fluidfactory": "^0.1.0",
+    "netrc": "^0.1.4"
   },
   "devDependencies": {
     "chai": "^4.1.1",

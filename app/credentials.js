@@ -3,6 +3,9 @@ exports = module.exports = function(container, file) {
     , Factory = require('fluidfactory');
   
   
+  var NetrcCredentialStore = require('../lib/netrccredentialstore');
+  return new NetrcCredentialStore();
+  
   var factory = new Factory();
   
   return Promise.resolve(factory)
