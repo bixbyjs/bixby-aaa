@@ -36,7 +36,7 @@ exports = module.exports = function(container, file) {
     });
 };
 
-exports['@implements'] = 'http://i.bixbyjs.org/security/CredentialsStore';
+exports['@implements'] = 'http://i.bixbyjs.org/security/Keyring';
 exports['@singleton'] = true;
 exports['@require'] = [
   '!container',
