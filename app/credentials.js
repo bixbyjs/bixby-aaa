@@ -3,8 +3,18 @@ exports = module.exports = function(container, file) {
     , Factory = require('fluidfactory');
   
   
-  var NetrcCredentialStore = require('../lib/netrccredentialstore');
-  return new NetrcCredentialStore();
+  var PluggableCredentialStore = require('../lib/credentials/pluggable')
+    , NetrcCredentialStore = require('../lib/credentials/netrc')
+    , EnvCredentialStore = require('../lib/credentials/env')
+  
+  var store = new PluggableCredentialStore();
+  
+  store.use(new NetrcCredentialStore());
+  store.use(new EnvCredentialStore());
+  return store;
+  
+  
+  //return new NetrcCredentialStore();
   
   var factory = new Factory();
   
