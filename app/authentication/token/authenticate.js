@@ -1,6 +1,8 @@
 exports = module.exports = function(tokens) {
   
-  return function(token, options, cb) {
+  var svc = {};
+  
+  svc.verify = function(token, options, cb) {
     if (typeof options == 'function') {
       cb = options;
       options = undefined;
@@ -12,6 +14,8 @@ exports = module.exports = function(tokens) {
       return cb(null, message, conditions, issuer);
     });
   };
+  
+  return svc;
   
   /*
   return function(subject, issuer, cb) {
@@ -32,7 +36,7 @@ exports = module.exports = function(tokens) {
   */
 };
 
-exports['@implements'] = 'http://i.bixbyjs.org/security/authentication/token/authenticate';
+exports['@implements'] = 'http://i.bixbyjs.org/security/TokenService';
 exports['@require'] = [
   'http://i.bixbyjs.org/security/tokens'
 ];

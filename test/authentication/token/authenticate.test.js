@@ -12,7 +12,7 @@ describe('authentication/token/authenticate', function() {
   });
   
   it('should be annotated', function() {
-    expect(factory['@implements']).to.equal('http://i.bixbyjs.org/security/authentication/token/authenticate');
+    expect(factory['@implements']).to.equal('http://i.bixbyjs.org/security/TokenService');
     expect(factory['@singleton']).to.be.undefined;
   });
   
@@ -48,7 +48,7 @@ describe('authentication/token/authenticate', function() {
       before(function(done) {
         var authenticate = factory(tokens);
         
-        authenticate('2YotnFZFEjr1zCsicMWpAA', function(err, m, c, i) {
+        authenticate.verify('2YotnFZFEjr1zCsicMWpAA', function(err, m, c, i) {
           if (err) { return done(err); }
           message = m;
           conditions = c;

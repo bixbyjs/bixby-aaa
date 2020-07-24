@@ -6,8 +6,9 @@ exports = module.exports = function(encode, decode) {
   };
 };
 
-exports['@implements'] = 'http://i.bixbyjs.org/security/tokens/Schema';
-exports['@type'] = 'urn:ietf:params:oauth:token-type:jwt';
+exports['@implements'] = 'http://i.bixbyjs.org/tokens/Dialect';
+//exports['@type'] = 'urn:ietf:params:oauth:token-type:jwt';
+exports['@type'] = 'application/at+jwt';
 exports['@require'] = [
   './encode',
   './decode'

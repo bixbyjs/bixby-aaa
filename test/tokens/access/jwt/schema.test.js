@@ -11,8 +11,8 @@ describe('tokens/access/jwt/schema', function() {
   });
   
   it('should be annotated', function() {
-    expect(factory['@implements']).to.equal('http://i.bixbyjs.org/security/tokens/Schema');
-    expect(factory['@type']).to.equal('urn:ietf:params:oauth:token-type:jwt');
+    expect(factory['@implements']).to.equal('http://i.bixbyjs.org/tokens/Dialect');
+    expect(factory['@type']).to.equal('application/at+jwt');
     expect(factory['@singleton']).to.be.undefined;
   });
   

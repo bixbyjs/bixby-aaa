@@ -6,7 +6,7 @@ exports = module.exports = function(IoC, tokens, logger) {
   
   return Promise.resolve(itokens)
     .then(function(itokens) {
-      var components = IoC.components('http://i.bixbyjs.org/security/tokens/Schema');
+      var components = IoC.components('http://i.bixbyjs.org/tokens/Dialect');
       return Promise.all(components.map(function(comp) { return comp.create(); } ))
         .then(function(schemas) {
           schemas.forEach(function(schema, i) {
