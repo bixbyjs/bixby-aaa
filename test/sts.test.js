@@ -5,7 +5,7 @@ var sinon = require('sinon');
 var factory = require('../app/sts');
 
 
-describe('authentication/token/authenticate', function() {
+describe('sts', function() {
   
   it('should export factory function', function() {
     expect(factory).to.be.a('function');
@@ -16,69 +16,50 @@ describe('authentication/token/authenticate', function() {
     expect(factory['@singleton']).to.be.undefined;
   });
   
-  describe('authenticate', function() {
-    var tokens = {
-      decode: function(){}
-    }
+  describe('#verify', function() {
     
+    describe('verifying a token', function() {
+      var unsealer = new Object();
+      unsealer.unseal = sinon.stub().yieldsAsync(null, { sub: '248289761001' });
     
-    describe('valid token', function() {
-      var message, conditions, issuer;
-      
-      before(function() {
-        var message = {
-          user: { id: '1' },
-          client: { id: 's6BhdRkqt3' },
-          scope: [ 'read:foo', 'write:foo' ]
-        }
-        var conditions = {
-          oneTimeUse: true
-        }
-        var issuer = {
-          identifier: 'https://server.example.com'
-        }
-        
-        sinon.stub(tokens, 'decode').yields(null, message, conditions, issuer);
+      var deserializer = new Object();
+      deserializer.deserialize = sinon.stub().yieldsAsync(null, {
+        user: { id: '248289761001' }
       });
-      
-      after(function() {
-        tokens.decode.restore();
-      });
-      
+    
+      var tokens = new Object();
+      tokens.createUnsealer = sinon.stub().returns(unsealer);
+      tokens.createDeserializer = sinon.stub().returns(deserializer);
+    
+      var msg;
+    
       before(function(done) {
-        var authenticate = factory(tokens);
-        
-        authenticate.verify('2YotnFZFEjr1zCsicMWpAA', function(err, m, c, i) {
+        var sts = factory(tokens);
+        sts.verify('2YotnFZFEjr1zCsicMWpAA', function(err, m) {
           if (err) { return done(err); }
-          message = m;
-          conditions = c;
-          issuer = i;
+          msg = m;
           done();
-        })
-      });
-      
-      it('should decode token', function() {
-        expect(tokens.decode.callCount).to.equal(1);
-        expect(tokens.decode.args[0][0]).to.equal('2YotnFZFEjr1zCsicMWpAA');
-      });
-      
-      it('should yield message', function() {
-        expect(message).to.deep.equal({
-          user: { id: '1' },
-          client: { id: 's6BhdRkqt3' },
-          scope: [ 'read:foo', 'write:foo' ]
         });
       });
       
-      it('should yield conditions', function() {
-        expect(conditions).to.deep.equal({ oneTimeUse: true });
+      it('should unseal token', function() {
+        expect(unsealer.unseal.callCount).to.equal(1);
+        expect(unsealer.unseal.args[0][0]).to.equal('2YotnFZFEjr1zCsicMWpAA');
+        expect(unsealer.unseal.args[0][1]).to.deep.equal({});
       });
       
-      it('should yield issuer', function() {
-        expect(issuer).to.deep.equal({ identifier: 'https://server.example.com' });
+      it('should deserialize claims', function() {
+        expect(deserializer.deserialize.callCount).to.equal(1);
+        expect(deserializer.deserialize.args[0][0]).to.deep.equal({ sub: '248289761001' });
       });
-    }); // valid token
     
-  }); // authenticate
+      it('should yield message', function() {
+        expect(msg).to.deep.equal({
+          user: { id: '248289761001' }
+        });
+      });
+    }); // verifying a token
+    
+  }); // #verify
   
 });
