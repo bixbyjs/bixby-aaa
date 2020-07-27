@@ -9,9 +9,26 @@ exports = module.exports = function(tokens) {
     }
     options = options || {};
     
-    tokens.decode(token, options, function(err, message, conditions, issuer) {
-      if (err) { return cb(err); }
-      return cb(null, message, conditions, issuer);
+    
+    var unsealer;
+    try {
+      unsealer = tokens.createUnsealer();
+    } catch (ex) {
+      return cb(ex);
+    }
+    
+    unsealer.unseal(token, options, function(err, claims, conditions, issuer) {
+      var dialect;
+      try {
+        dialect = tokens.createDeserializer();
+      } catch (ex) {
+        return cb(ex);
+      }
+      
+      dialect.deserialize(claims, function(err, msg) {
+        if (err) { return cb(err); }
+        return cb(null, msg);
+      });
     });
   };
   
@@ -38,6 +55,6 @@ exports = module.exports = function(tokens) {
 
 exports['@implements'] = 'http://i.bixbyjs.org/security/TokenService';
 exports['@require'] = [
-  'http://i.bixbyjs.org/security/tokens'
+  'http://i.bixbyjs.org/tokens'
 ];
 //exports['@require'] = [ 'http://i.bixbyjs.org/ds/Directory' ];
