@@ -35,7 +35,6 @@
     "components": [
       "credentials",
       "credentials/file",
-      "tokens/main",
       "tokens/access/jwt/schema",
       "sts"
     ]
