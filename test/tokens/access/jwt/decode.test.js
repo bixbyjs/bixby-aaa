@@ -1,5 +1,6 @@
 /* global describe, it */
 
+/*
 var $require = require('proxyquire');
 var expect = require('chai').expect;
 var sinon = require('sinon');
@@ -31,3 +32,4 @@ describe('tokens/access/jwt/decode', function() {
   });
   
 });
+*/

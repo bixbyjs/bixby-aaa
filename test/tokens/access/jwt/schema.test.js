@@ -1,5 +1,6 @@
 /* global describe, it */
 
+/*
 var expect = require('chai').expect;
 var factory = require('../../../../app/tokens/access/jwt/schema');
 
@@ -17,3 +18,4 @@ describe('tokens/access/jwt/schema', function() {
   });
   
 });
+*/
